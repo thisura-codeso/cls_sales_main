@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>              
+<flectra>
+
+<record id="sale_change_price_form" model="ir.ui.view">
+    <field name="name">sale.change.price.form</field>
+    <field name="model">sale.change.price</field>
+    <field name="arch" type ="xml">
+    <form string="Product Price Change">
+    
+    <header>
+    <button name="approve" type="object" string="Approve" class="oe_highlight" attrs="{'invisible': [('state','!=', 'draft')]}"/>
+    <field name="state" widget="statusbar"/>
+    </header>
+    <sheet>
+    <group>
+    <field name="product_cat"/>
+    <field name="percentage_type"/>
+    <field name="percentage"/>
+    <field name="date" readonly="1"/>
+    </group>
+    </sheet>
+    </form>
+
+    
+    </field>
+</record>
+
+<record id="sale_change_price_tree" model="ir.ui.view">
+    <field name="name">sale.change.price.tree</field>
+    <field name="model">sale.change.price</field>
+    <field name="arch" type ="xml">
+    <tree string="Product Price Change">
+    
+    <field name="product_cat"/>
+    <field name="percentage_type"/>
+    <field name="percentage"/>
+    <field name="state"/>
+    <field name="date"/>
+    </tree>
+    
+    
+    </field>
+</record>
+
+<record id="action_scp" model="ir.actions.act_window">                                             <!--Creating action for submenu-->
+    <field name="name">Products Price Change</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">sale.change.price</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>  
+</record>     
+
+
+    <menuitem name="Products Price Change"
+    id ="cls_sales_main.ppc"
+    parent="sale.sale_menu_root"
+    action="action_scp"/>
+
+
+
+
+
+
+
+</flectra>
